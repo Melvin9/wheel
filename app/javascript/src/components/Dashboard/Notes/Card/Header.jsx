@@ -3,10 +3,10 @@ import React from "react";
 import { MenuVertical } from "@bigbinary/neeto-icons";
 import { Typography, Dropdown } from "neetoui/v2";
 
-const Header = ({ title }) => {
+const Header = ({ note, setSelectedNoteId, setShowDeleteAlert }) => {
   return (
     <div className="flex w-full justify-between">
-      <Typography style="h4">{title}</Typography>
+      <Typography style="h4">{note.title}</Typography>
       <Dropdown
         icon={() => <MenuVertical size={15} color="gray" />}
         buttonStyle="text"
@@ -14,7 +14,14 @@ const Header = ({ title }) => {
         className="pr-0"
       >
         <li>Edit</li>
-        <li>Delete</li>
+        <li
+          onClick={() => {
+            setSelectedNoteId(note.id);
+            setShowDeleteAlert(true);
+          }}
+        >
+          Delete
+        </li>
       </Dropdown>
     </div>
   );
