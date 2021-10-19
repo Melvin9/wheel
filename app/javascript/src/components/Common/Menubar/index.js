@@ -10,7 +10,7 @@ const Menubar = () => {
 
   return (
     <div className="flex">
-      <MenuBar showMenu={true} title="Contacts">
+      <MenuBar showMenu={true} title="Notes">
         <MenuBar.Block label="All" count={200} active />
         <MenuBar.Block label="Users" count={80} />
         <MenuBar.Block label="Leads" count={60} />
@@ -39,7 +39,6 @@ const Menubar = () => {
         <MenuBar.Block label="Europe" count={80} />
         <MenuBar.Block label="Middle-East" count={60} />
         <MenuBar.Block label="Asia" count={60} />
-        <MenuBar.AddNew label="Add New Segments" />
         <MenuBar.SubTitle
           iconProps={[
             {
@@ -65,7 +64,6 @@ const Menubar = () => {
         <MenuBar.Block label="Europe" count={80} />
         <MenuBar.Block label="Middle-East" count={60} />
         <MenuBar.Block label="Asia" count={60} />
-        <MenuBar.AddNew label="Add New Tag" />
       </MenuBar>
     </div>
   );

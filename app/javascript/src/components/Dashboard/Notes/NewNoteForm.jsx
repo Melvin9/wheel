@@ -1,8 +1,7 @@
 import React from "react";
 
 import { Formik, Form } from "formik";
-import { Button } from "neetoui";
-import { Input, Textarea } from "neetoui/formik";
+import { Button, Input, Select } from "neetoui/v2";
 import * as yup from "yup";
 
 import notesApi from "apis/notes";
@@ -26,13 +25,66 @@ export default function NewNoteForm({ onClose, refetch }) {
       onSubmit={handleSubmit}
       validationSchema={yup.object({
         title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required")
+        description: yup.string().required("Description is required"),
+        contact: yup.string().required("Assigned contact is required"),
+        tags: yup.string().required("Tag is required")
       })}
     >
       {({ isSubmitting }) => (
         <Form>
-          <Input label="Title" name="title" className="mb-6" />
-          <Textarea label="Description" name="description" rows={8} />
+          <Input
+            className=""
+            label="Title"
+            name="title"
+            placeholder="Enter Title"
+            required
+            size="small"
+          />
+          <Input
+            className="pt-4"
+            label="Description"
+            name="description"
+            placeholder="Enter note description"
+            required
+            size="large"
+          />
+          <Select
+            className="pt-4"
+            isClearable
+            isSearchable
+            label="Assigned Contact"
+            name="contact"
+            options={[
+              {
+                label: "Value One",
+                value: "value1"
+              },
+              {
+                label: "Value Two",
+                value: "value2"
+              }
+            ]}
+            placeholder="Select Role"
+            size="small"
+          />
+          <Select
+            className="pt-4"
+            isMulti
+            label="Tags"
+            name="tags"
+            options={[
+              {
+                label: "Value One",
+                value: "value1"
+              },
+              {
+                label: "Value Two",
+                value: "value2"
+              }
+            ]}
+            placeholder="Select Role"
+            size="small"
+          />
           <div className="nui-pane__footer nui-pane__footer--absolute">
             <Button
               onClick={onClose}
