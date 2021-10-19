@@ -8,6 +8,7 @@ import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
 import Menubar from "components/Common/Menubar";
 
+import Card from "./Card";
 import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./NewNotePane";
 import NoteTable from "./NoteTable";
@@ -34,6 +35,7 @@ const Notes = () => {
     } finally {
       setLoading(false);
     }
+    setLoading(false);
   };
 
   if (loading) {
@@ -72,6 +74,7 @@ const Notes = () => {
               setSelectedNoteIds={setSelectedNoteIds}
               notes={notes}
             />
+            <Card />
           </>
         ) : (
           <EmptyState
