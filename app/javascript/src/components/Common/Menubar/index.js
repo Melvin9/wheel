@@ -4,13 +4,11 @@ import { Search, Settings, Plus } from "@bigbinary/neeto-icons";
 import { Typography } from "neetoui/v2";
 import { MenuBar } from "neetoui/v2/layouts";
 
-const Menubar = () => {
-  // const [showMenu, setShowMenu] = useState(true);
+const Menubar = props => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
-
   return (
     <div className="flex">
-      <MenuBar showMenu={true} title="Notes">
+      <MenuBar showMenu={props.showMenu} title="Notes">
         <MenuBar.Block label="All" count={200} active />
         <MenuBar.Block label="Users" count={80} />
         <MenuBar.Block label="Leads" count={60} />
