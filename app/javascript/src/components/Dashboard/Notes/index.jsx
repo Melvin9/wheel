@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 
-// import EmptyNotesListImage from "images/EmptyNotesList";
 import { Search } from "@bigbinary/neeto-icons";
+import EmptyNotesListImage from "images/EmptyNotesList";
 import { Button, PageLoader, Input } from "neetoui/v2";
 import { Header, Container } from "neetoui/v2/layouts";
 
-// import EmptyState from "components/Common/EmptyState";
+import EmptyState from "components/Common/EmptyState";
 import Menubar from "components/Common/Menubar";
 
 // import DeleteAlert from "./DeleteAlert";
 import Card from "./Card";
+import { DUMMY_DATA } from "./constants";
 import NewNotePane from "./NewNotePane";
 
 const Notes = () => {
@@ -18,22 +19,14 @@ const Notes = () => {
   // const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   // const [selectedNoteIds, setSelectedNoteIds] = useState([]);
-  // const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(true);
   useEffect(() => {
     fetchNotes();
   }, []);
 
   const fetchNotes = async () => {
-    // try {
-    //   setLoading(true);
-    //   const response = await notesApi.fetch();
-    //   setNotes(response.data.notes);
-    // } catch (error) {
-    //   logger.error(error);
-    // } finally {
-    //   setLoading(false);
-    // }
+    setNotes(DUMMY_DATA);
     setLoading(false);
   };
 
@@ -66,16 +59,13 @@ const Notes = () => {
             </div>
           }
         />
-        {/* {notes.length ? ( */}
-        <>
-          {/* <NoteTable
-              selectedNoteIds={selectedNoteIds}
-              setSelectedNoteIds={setSelectedNoteIds}
-              notes={notes}
-            /> */}
-          <Card />
-        </>
-        {/* ) : (
+        {notes.length ? (
+          <>
+            {notes.map(note => (
+              <Card key={note.id} note={note} />
+            ))}
+          </>
+        ) : (
           <EmptyState
             image={EmptyNotesListImage}
             title="Looks like you don't have any notes!"
@@ -83,7 +73,7 @@ const Notes = () => {
             primaryAction={() => setShowNewNotePane(true)}
             primaryActionLabel="Add New Note"
           />
-        )} */}
+        )}
         <NewNotePane
           showPane={showNewNotePane}
           setShowPane={setShowNewNotePane}

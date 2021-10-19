@@ -4,14 +4,14 @@ import Body from "./Body";
 import Footer from "./Footer";
 import Header from "./Header";
 
-const Card = () => {
+const Card = ({ note }) => {
   return (
-    <div className="border border-gray-300 neeto-ui-shadow-s p-4 rounded w-full">
+    <div className="border border-gray-300 neeto-ui-shadow-s p-4 rounded w-full mt-3">
       <div className="border-b border-gray pb-3">
-        <Header />
-        <Body />
+        <Header title={note.title} />
+        <Body description={note.description} />
       </div>
-      <Footer />
+      <Footer tags={note.tags} />
     </div>
   );
 };

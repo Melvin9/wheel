@@ -3,10 +3,15 @@ import React from "react";
 import { Clock } from "@bigbinary/neeto-icons";
 import { Avatar, Tooltip, Tag, Typography } from "neetoui/v2";
 
-const Footer = () => {
+const Footer = ({ tags }) => {
   return (
     <div className="flex justify-between items-center pt-3">
-      <Tag className="p-2" label="Getting started" size="small" />
+      <div className="flex space-x-2">
+        {tags.map((tag, index) => (
+          <Tag key={index} className="p-2" label={tag} size="small" />
+        ))}
+      </div>
+
       <div className="flex items-center space-x-2">
         <Clock size={12} />
         <Tooltip content="Wednesday, 10:30AM" placement="bottom">

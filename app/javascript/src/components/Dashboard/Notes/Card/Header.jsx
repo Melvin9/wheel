@@ -3,10 +3,10 @@ import React from "react";
 import { MenuVertical } from "@bigbinary/neeto-icons";
 import { Typography, Dropdown } from "neetoui/v2";
 
-const Header = () => {
+const Header = ({ title }) => {
   return (
     <div className="flex w-full justify-between">
-      <Typography style="h4">Typography</Typography>
+      <Typography style="h4">{title}</Typography>
       <Dropdown
         icon={() => <MenuVertical size={15} color="gray" />}
         buttonStyle="text"
