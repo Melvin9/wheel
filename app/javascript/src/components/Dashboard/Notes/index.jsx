@@ -36,7 +36,7 @@ const Notes = () => {
 
   return (
     <div className="flex flex-row w-full">
-      <Menubar showMenu={toggleMenu} />
+      <Menubar showMenu={toggleMenu} type="notes" />
       <Container>
         <Header
           title="Notes"
