@@ -6,12 +6,22 @@ import { Pane, Typography, Button } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
 import * as yup from "yup";
 
-export default function NewNotePane({ showPane, setShowPane }) {
+import { ROLES } from "./constants";
+
+export default function NewNotePane({ setNotes, showPane, setShowPane }) {
   const onClose = () => setShowPane(false);
-  const handleSubmit = () => {
-    // refetch();
+  const handleSubmit = values => {
+    setNotes(notes => {
+      const newNote = {
+        id: notes.length + 1,
+        title: values.title,
+        description: values.description,
+        tags: values.tags.map(({ label }) => label),
+        contact: values.tags.map(({ label }) => label)
+      };
+      return [...notes, newNote];
+    });
     onClose();
-    //handle Submit
   };
   return (
     <Pane isOpen={showPane} onClose={onClose}>
@@ -76,16 +86,7 @@ export default function NewNotePane({ showPane, setShowPane }) {
                   isMulti
                   label="Tags"
                   name="tags"
-                  options={[
-                    {
-                      label: "Value One",
-                      value: "value1"
-                    },
-                    {
-                      label: "Value Two",
-                      value: "value2"
-                    }
-                  ]}
+                  options={ROLES}
                   placeholder="Select Role"
                   required
                   size="small"

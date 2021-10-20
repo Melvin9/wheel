@@ -24,5 +24,30 @@ const DUMMY_DATA = [
     contact: ""
   }
 ];
-
-export { DUMMY_DATA };
+const ROLES = [
+  {
+    label: "Getting Started",
+    value: "Getting Started"
+  },
+  {
+    label: "Onboarding",
+    value: "Onboarding"
+  },
+  {
+    label: "User Flow",
+    value: "User Flow"
+  },
+  {
+    label: "UX",
+    value: "UX"
+  },
+  {
+    label: "Bugs",
+    value: "Bugs"
+  },
+  {
+    label: "V2",
+    value: "V2"
+  }
+];
+export { DUMMY_DATA, ROLES };

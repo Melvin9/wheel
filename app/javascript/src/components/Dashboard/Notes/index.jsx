@@ -42,9 +42,9 @@ const Notes = () => {
           title="Notes"
           menuBarToggle={() => setToggleMenu(!toggleMenu)}
           actionBlock={
-            <div className="flex flex-wrap ">
+            <div className="flex">
               <Input
-                className="pr-2 w-96"
+                className="pr-2 w-80"
                 onChange={e => setSearchTerm(e.target.value)}
                 placeholder="Search Name, Email, Phone Number,Etc. "
                 size="small"
@@ -82,7 +82,7 @@ const Notes = () => {
         <NewNotePane
           showPane={showNewNotePane}
           setShowPane={setShowNewNotePane}
-          fetchNotes={fetchNotes}
+          setNotes={setNotes}
         />
         {showDeleteAlert && (
           <DeleteAlert
