@@ -10,8 +10,9 @@ import Menubar from "components/Common/Menubar";
 
 import Card from "./Card";
 import { DUMMY_DATA } from "./constants";
-import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./NewNotePane";
+
+import DeleteAlert from "../../Common/DeleteAlert";
 
 const Notes = () => {
   const [loading, setLoading] = useState(true);
@@ -36,7 +37,7 @@ const Notes = () => {
 
   return (
     <div className="flex flex-row w-full">
-      <Menubar showMenu={toggleMenu} />
+      <Menubar showMenu={toggleMenu} type="notes" />
       <Container>
         <Header
           title="Notes"
