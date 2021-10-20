@@ -8,17 +8,17 @@ import { Header, Container } from "neetoui/v2/layouts";
 import EmptyState from "components/Common/EmptyState";
 import Menubar from "components/Common/Menubar";
 
-// import DeleteAlert from "./DeleteAlert";
 import Card from "./Card";
 import { DUMMY_DATA } from "./constants";
+import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./NewNotePane";
 
 const Notes = () => {
   const [loading, setLoading] = useState(true);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
-  // const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  // const [selectedNoteIds, setSelectedNoteIds] = useState([]);
+  const [selectedNoteId, setSelectedNoteId] = useState([]);
   const [notes, setNotes] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(true);
   useEffect(() => {
@@ -42,7 +42,7 @@ const Notes = () => {
           title="Notes"
           menuBarToggle={() => setToggleMenu(!toggleMenu)}
           actionBlock={
-            <div className="flex ">
+            <div className="flex flex-wrap ">
               <Input
                 className="pr-2 w-96"
                 onChange={e => setSearchTerm(e.target.value)}
@@ -62,7 +62,12 @@ const Notes = () => {
         {notes.length ? (
           <>
             {notes.map(note => (
-              <Card key={note.id} note={note} />
+              <Card
+                key={note.id}
+                note={note}
+                setSelectedNoteId={setSelectedNoteId}
+                setShowDeleteAlert={setShowDeleteAlert}
+              />
             ))}
           </>
         ) : (
@@ -79,13 +84,13 @@ const Notes = () => {
           setShowPane={setShowNewNotePane}
           fetchNotes={fetchNotes}
         />
-        {/* {showDeleteAlert && (
+        {showDeleteAlert && (
           <DeleteAlert
-            selectedNoteIds={selectedNoteIds}
+            selectedNoteId={selectedNoteId}
             onClose={() => setShowDeleteAlert(false)}
-            refetch={fetchNotes}
+            setNotes={setNotes}
           />
-        )} */}
+        )}
       </Container>
     </div>
   );
