@@ -5,7 +5,7 @@ import { Modal, Typography, Button, Toastr } from "neetoui/v2";
 export default function DeleteAlert({ setNotes, onClose, selectedNoteId }) {
   const handleDelete = () => {
     setNotes(notes => notes.filter(note => selectedNoteId !== note.id));
-    Toastr.success("Deleted Note Successfully");
+    Toastr.success("Note deleted successfully");
     onClose();
   };
   return (

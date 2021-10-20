@@ -2,7 +2,7 @@ import React from "react";
 
 import { Check } from "@bigbinary/neeto-icons";
 import { Formik, Form } from "formik";
-import { Pane, Typography, Button } from "neetoui/v2";
+import { Pane, Typography, Button, Toastr } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
 import * as yup from "yup";
 
@@ -21,6 +21,7 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
       };
       return [...notes, newNote];
     });
+    Toastr.success("Note added successfully");
     onClose();
   };
   return (
