@@ -4,9 +4,13 @@ import { Formik, Form } from "formik";
 import { Check } from "neetoicons";
 import { Pane, Typography, Button, Toastr } from "neetoui";
 import { Input, Select } from "neetoui/formik";
-import * as yup from "yup";
 
-import { CONTACTS, ROLES } from "./constants";
+import {
+  CONTACTS,
+  FORM_INITIAL_VALUES,
+  FORM_VALIDATE_NOTES,
+  ROLES
+} from "./constants";
 
 export default function NewNotePane({ setNotes, showPane, setShowPane }) {
   const onClose = () => setShowPane(false);
@@ -32,15 +36,9 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
         </Typography>
       </Pane.Header>
       <Formik
-        initialValues={{
-          title: "",
-          description: ""
-        }}
+        initialValues={FORM_INITIAL_VALUES}
         onSubmit={handleSubmit}
-        validationSchema={yup.object({
-          title: yup.string().required("Title is required"),
-          description: yup.string().required("Description is required")
-        })}
+        validationSchema={FORM_VALIDATE_NOTES}
       >
         {({ isSubmitting }) => (
           <Form>
