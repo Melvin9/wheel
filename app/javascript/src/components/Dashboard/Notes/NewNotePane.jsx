@@ -45,7 +45,7 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
         {({ isSubmitting }) => (
           <Form>
             <Pane.Body>
-              <div className="w-full">
+              <div className="w-full space-y-6">
                 <Input
                   className=""
                   label="Title"
@@ -55,7 +55,6 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
                   size="small"
                 />
                 <Input
-                  className="pt-6"
                   label="Description"
                   name="description"
                   placeholder="Enter note description"
@@ -63,7 +62,6 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
                   size="large"
                 />
                 <Select
-                  className="pt-6"
                   isClearable
                   isSearchable
                   label="Assigned Contact"
@@ -74,7 +72,6 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
                   size="small"
                 />
                 <Select
-                  className="pt-6"
                   isMulti
                   label="Tags"
                   name="tags"
