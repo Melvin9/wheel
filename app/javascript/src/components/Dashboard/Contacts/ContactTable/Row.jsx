@@ -7,7 +7,7 @@ const Row = ({ contact }) => {
   return (
     <tr>
       <td>
-        <Checkbox name="1" />
+        <Checkbox name={contact.id} />
       </td>
 
       <td>
