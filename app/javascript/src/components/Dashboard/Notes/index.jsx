@@ -87,9 +87,10 @@ const Notes = () => {
         />
         {showDeleteAlert && (
           <DeleteAlert
-            selectedNoteId={selectedNoteId}
+            type="Note"
+            selectedId={selectedNoteId}
             onClose={() => setShowDeleteAlert(false)}
-            setNotes={setNotes}
+            func={setNotes}
           />
         )}
       </Container>
