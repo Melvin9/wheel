@@ -3,7 +3,11 @@ import React from "react";
 import Header from "./Header";
 import Row from "./Row";
 
-const ContactTable = ({ contacts }) => {
+const ContactTable = ({
+  contacts,
+  setSelectedContactId,
+  setShowDeleteAlert
+}) => {
   return (
     <table
       className={`neeto-ui-table neeto-ui-table--checkbox neeto-ui-table--actions`}
@@ -11,7 +15,12 @@ const ContactTable = ({ contacts }) => {
       <Header />
       <tbody>
         {contacts.map((contact, index) => (
-          <Row key={index} contact={contact} />
+          <Row
+            key={index}
+            contact={contact}
+            setSelectedContactId={setSelectedContactId}
+            setShowDeleteAlert={setShowDeleteAlert}
+          />
         ))}
       </tbody>
     </table>

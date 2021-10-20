@@ -16,7 +16,7 @@ export default function NewContactPane({ setContacts, showPane, setShowPane }) {
   const handleSubmit = values => {
     setContacts(contacts => {
       const newContact = {
-        id: contacts.length + 1,
+        id: contacts[contacts.length - 1].id + 1,
         firstName: values.firstName,
         lastName: values.lastName,
         role: values.role,

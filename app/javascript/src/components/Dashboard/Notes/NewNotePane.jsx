@@ -17,7 +17,7 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
   const handleSubmit = values => {
     setNotes(notes => {
       const newNote = {
-        id: notes.length + 1,
+        id: notes[notes.length - 1] + 1,
         title: values.title,
         description: values.description,
         tags: values.tags.map(({ label }) => label),
