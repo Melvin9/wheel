@@ -12,10 +12,14 @@ import { DUMMY_CONTACT } from "./constants";
 import ContactTable from "./ContactTable";
 import NewContactPane from "./NewContactPane";
 
+import DeleteAlert from "../../Common/DeleteAlert";
+
 const Contacts = () => {
   const [loading, setLoading] = useState(true);
   const [showNewContactPane, setShowNewContactPane] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedContactId, setSelectedContactId] = useState([]);
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [contacts, setContacts] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(true);
   useEffect(() => {
@@ -60,7 +64,11 @@ const Contacts = () => {
           <>
             <Scrollable className="w-full">
               <>
-                <ContactTable contacts={contacts} />
+                <ContactTable
+                  contacts={contacts}
+                  setSelectedContactId={setSelectedContactId}
+                  setShowDeleteAlert={setShowDeleteAlert}
+                />
               </>
             </Scrollable>
             <div className="flex flex-row items-center justify-end w-full mt-6 mb-8">
@@ -86,6 +94,14 @@ const Contacts = () => {
           setShowPane={setShowNewContactPane}
           setContacts={setContacts}
         />
+        {showDeleteAlert && (
+          <DeleteAlert
+            type="Contact"
+            selectedId={selectedContactId}
+            onClose={() => setShowDeleteAlert(false)}
+            func={setContacts}
+          />
+        )}
       </Container>
     </div>
   );
