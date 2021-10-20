@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Typography } from "neetoui";
+import PropTypes from "prop-types";
 
 import Body from "./Body";
 import Footer from "./Footer";
@@ -25,5 +26,9 @@ const Card = ({ note, setSelectedNoteId, setShowDeleteAlert }) => {
     </>
   );
 };
-
+Card.propTypes = {
+  note: PropTypes.object,
+  setSelectedNoteId: PropTypes.func,
+  setShowDeleteAlert: PropTypes.func
+};
 export default Card;

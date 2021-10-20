@@ -11,7 +11,6 @@ const Header = ({ note, setSelectedNoteId, setShowDeleteAlert }) => {
         icon={() => <MenuVertical size={15} color="gray" />}
         buttonStyle="text"
         position="bottom-end"
-        className="pr-0"
       >
         <li>Edit</li>
         <li
