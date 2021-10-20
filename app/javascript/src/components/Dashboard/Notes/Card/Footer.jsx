@@ -5,10 +5,10 @@ import { Avatar, Tooltip, Tag, Typography } from "neetoui/v2";
 
 const Footer = ({ tags }) => {
   return (
-    <div className="flex justify-between pt-3 place-items-center">
+    <div className="flex justify-between pt-3 items-center">
       <div className="flex space-x-2">
         {tags.map((tag, index) => (
-          <Tag key={index} className="p-2" label={tag} size="small" />
+          <Tag key={index} label={tag} size="small" />
         ))}
       </div>
 
