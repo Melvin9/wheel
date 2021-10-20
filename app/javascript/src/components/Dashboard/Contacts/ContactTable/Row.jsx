@@ -27,7 +27,7 @@ const Row = ({ contact }) => {
         </div>
       </td>
       <td>{contact.email}</td>
-      <td>{contact.createdAt}</td>
+      <td>{contact.createdAt ? contact.createdAt : "Feb, 5, 2021"}</td>
       <td>
         <div className="flex flex-row items-center justify-end space-x-3">
           <Dropdown icon={MenuHorizontal} buttonStyle="icon" autoWidth>

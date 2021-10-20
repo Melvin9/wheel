@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 
+import EmptyNotesListImage from "images/EmptyNotesList";
 import { Search } from "neetoicons";
 import { Button, PageLoader, Input, Pagination } from "neetoui";
 import { Header, Container, Scrollable } from "neetoui/layouts";
 
+import EmptyState from "components/Common/EmptyState";
 import Menubar from "components/Common/Menubar";
 
 import { DUMMY_CONTACT } from "./constants";
 import ContactTable from "./ContactTable";
+import NewContactPane from "./NewContactPane";
 
 const Contacts = () => {
   const [loading, setLoading] = useState(true);
+  const [showNewContactPane, setShowNewContactPane] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [contacts, setContacts] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -44,23 +48,44 @@ const Contacts = () => {
                 value={searchTerm}
                 prefix={<Search size={16} />}
               />
-              <Button label="Add Contact" icon="ri-add-line" />
+              <Button
+                onClick={() => setShowNewContactPane(true)}
+                label="Add Contact"
+                icon="ri-add-line"
+              />
             </div>
           }
         />
-        <Scrollable className="w-full">
+        {contacts.length ? (
           <>
-            <ContactTable contacts={contacts} />
+            <Scrollable className="w-full">
+              <>
+                <ContactTable contacts={contacts} />
+              </>
+            </Scrollable>
+            <div className="flex flex-row items-center justify-end w-full mt-6 mb-8">
+              <Pagination
+                count={300}
+                pageNo={1}
+                pageSize={25}
+                navigate={() => {}}
+              />
+            </div>
           </>
-        </Scrollable>
-        <div className="flex flex-row items-center justify-end w-full mt-6 mb-8">
-          <Pagination
-            count={300}
-            pageNo={1}
-            pageSize={25}
-            navigate={() => {}}
+        ) : (
+          <EmptyState
+            image={EmptyNotesListImage}
+            title="Looks like you don't have any notes!"
+            subtitle="Add your notes to send customized emails to them."
+            primaryAction={() => setShowNewContactPane(true)}
+            primaryActionLabel="Add New Note"
           />
-        </div>
+        )}
+        <NewContactPane
+          showPane={showNewContactPane}
+          setShowPane={setShowNewContactPane}
+          setContacts={setContacts}
+        />
       </Container>
     </div>
   );
