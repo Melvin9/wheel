@@ -35,6 +35,8 @@ const DUMMY_CONTACT = [
   }
 ];
 
+const DEFAULT_CREATED_AT = "Feb, 5, 2021";
+
 const FORM_INITIAL_VALUES = {
   firstName: "",
   lastName: "",
@@ -69,5 +71,6 @@ export {
   DUMMY_CONTACT,
   FORM_INITIAL_VALUES,
   FORM_VALIDATE_CONTACTS,
-  ROLE_OPTIONS
+  ROLE_OPTIONS,
+  DEFAULT_CREATED_AT
 };
