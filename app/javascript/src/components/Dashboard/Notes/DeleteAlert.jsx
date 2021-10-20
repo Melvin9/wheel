@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Modal, Typography, Button, Toastr } from "neetoui/v2";
+import { Modal, Typography, Button, Toastr } from "neetoui";
 
 export default function DeleteAlert({ setNotes, onClose, selectedNoteId }) {
   const handleDelete = () => {

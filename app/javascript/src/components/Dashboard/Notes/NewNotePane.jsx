@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Check } from "@bigbinary/neeto-icons";
 import { Formik, Form } from "formik";
-import { Pane, Typography, Button, Toastr } from "neetoui/v2";
-import { Input, Select } from "neetoui/v2/formik";
+import { Check } from "neetoicons";
+import { Pane, Typography, Button, Toastr } from "neetoui";
+import { Input, Select } from "neetoui/formik";
 import * as yup from "yup";
 
 import { ROLES } from "./constants";

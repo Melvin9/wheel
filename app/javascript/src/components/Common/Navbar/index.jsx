@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Home, UserCircle, Settings } from "@bigbinary/neeto-icons";
+import { Home, UserCircle, Settings } from "neetoicons";
 import { Toastr } from "neetoui";
-import { Sidebar } from "neetoui/v2/layouts";
+import { Sidebar } from "neetoui/layouts";
 import { withRouter } from "react-router-dom";
 
 import authenticationApi from "apis/authentication";
