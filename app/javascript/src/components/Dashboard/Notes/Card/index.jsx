@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Typography } from "neetoui";
+
 import Body from "./Body";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -14,7 +16,9 @@ const Card = ({ note, setSelectedNoteId, setShowDeleteAlert }) => {
             setSelectedNoteId={setSelectedNoteId}
             setShowDeleteAlert={setShowDeleteAlert}
           />
-          <Body description={note.description} />
+          <Body>
+            <Typography style="body2">{note.description}</Typography>{" "}
+          </Body>
         </div>
         <Footer tags={note.tags} />
       </div>
