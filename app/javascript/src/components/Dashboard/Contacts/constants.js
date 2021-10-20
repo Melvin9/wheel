@@ -1,3 +1,5 @@
+import * as yup from "yup";
+
 const DUMMY_CONTACT = [
   {
     id: 1,
@@ -33,4 +35,42 @@ const DUMMY_CONTACT = [
   }
 ];
 
-export { DUMMY_CONTACT };
+const DEFAULT_CREATED_AT = "Feb, 5, 2021";
+
+const FORM_INITIAL_VALUES = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  role: ""
+};
+
+const FORM_VALIDATE_CONTACTS = yup.object({
+  firstName: yup.string().required("First Name is required"),
+  lastName: yup.string().required("Last Name is required"),
+  role: yup
+    .object({
+      label: yup.string(),
+      value: yup.string()
+    })
+    .required("Role required"),
+  email: yup.string().email().required("Email is required")
+});
+
+const ROLE_OPTIONS = [
+  {
+    label: "Owner",
+    value: "Owner"
+  },
+  {
+    label: "Admin",
+    value: "Admin"
+  }
+];
+
+export {
+  DUMMY_CONTACT,
+  FORM_INITIAL_VALUES,
+  FORM_VALIDATE_CONTACTS,
+  ROLE_OPTIONS,
+  DEFAULT_CREATED_AT
+};

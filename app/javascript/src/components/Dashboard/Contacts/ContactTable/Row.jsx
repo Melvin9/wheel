@@ -3,6 +3,8 @@ import React from "react";
 import { MenuHorizontal } from "neetoicons";
 import { Checkbox, Dropdown, Avatar, Typography } from "neetoui";
 
+import { DEFAULT_CREATED_AT } from "../constants";
+
 const Row = ({ contact }) => {
   return (
     <tr>
@@ -27,7 +29,7 @@ const Row = ({ contact }) => {
         </div>
       </td>
       <td>{contact.email}</td>
-      <td>{contact.createdAt}</td>
+      <td>{contact.createdAt ? contact.createdAt : DEFAULT_CREATED_AT}</td>
       <td>
         <div className="flex flex-row items-center justify-end space-x-3">
           <Dropdown icon={MenuHorizontal} buttonStyle="icon" autoWidth>
