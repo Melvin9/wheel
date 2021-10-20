@@ -1,3 +1,5 @@
+import * as yup from "yup";
+
 const DUMMY_DATA = [
   {
     id: 1,
@@ -50,4 +52,35 @@ const ROLES = [
     value: "V2"
   }
 ];
-export { DUMMY_DATA, ROLES };
+const CONTACTS = [
+  {
+    label: "Value One",
+    value: "value1"
+  },
+  {
+    label: "Value Two",
+    value: "value2"
+  }
+];
+const FORM_INITIAL_VALUES = {
+  title: "",
+  description: ""
+};
+const FORM_VALIDATE_NOTES = yup.object({
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
+  contact: yup
+    .object({
+      label: yup.string(),
+      value: yup.string()
+    })
+    .required("Role required"),
+  tags: yup.array().min(1).required("Tag required")
+});
+export {
+  DUMMY_DATA,
+  ROLES,
+  CONTACTS,
+  FORM_INITIAL_VALUES,
+  FORM_VALIDATE_NOTES
+};

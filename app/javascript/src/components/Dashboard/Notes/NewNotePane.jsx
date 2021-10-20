@@ -1,12 +1,16 @@
 import React from "react";
 
-import { Check } from "@bigbinary/neeto-icons";
 import { Formik, Form } from "formik";
-import { Pane, Typography, Button, Toastr } from "neetoui/v2";
-import { Input, Select } from "neetoui/v2/formik";
-import * as yup from "yup";
+import { Check } from "neetoicons";
+import { Pane, Typography, Button, Toastr } from "neetoui";
+import { Input, Select } from "neetoui/formik";
 
-import { ROLES } from "./constants";
+import {
+  CONTACTS,
+  FORM_INITIAL_VALUES,
+  FORM_VALIDATE_NOTES,
+  ROLES
+} from "./constants";
 
 export default function NewNotePane({ setNotes, showPane, setShowPane }) {
   const onClose = () => setShowPane(false);
@@ -32,20 +36,14 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
         </Typography>
       </Pane.Header>
       <Formik
-        initialValues={{
-          title: "",
-          description: ""
-        }}
+        initialValues={FORM_INITIAL_VALUES}
         onSubmit={handleSubmit}
-        validationSchema={yup.object({
-          title: yup.string().required("Title is required"),
-          description: yup.string().required("Description is required")
-        })}
+        validationSchema={FORM_VALIDATE_NOTES}
       >
         {({ isSubmitting }) => (
           <Form>
             <Pane.Body>
-              <div className="w-full">
+              <div className="w-full space-y-6">
                 <Input
                   className=""
                   label="Title"
@@ -55,7 +53,6 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
                   size="small"
                 />
                 <Input
-                  className="pt-6"
                   label="Description"
                   name="description"
                   placeholder="Enter note description"
@@ -63,27 +60,16 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
                   size="large"
                 />
                 <Select
-                  className="pt-6"
                   isClearable
                   isSearchable
                   label="Assigned Contact"
                   name="contact"
-                  options={[
-                    {
-                      label: "Value One",
-                      value: "value1"
-                    },
-                    {
-                      label: "Value Two",
-                      value: "value2"
-                    }
-                  ]}
+                  options={CONTACTS}
                   placeholder="Select Role"
                   required
                   size="small"
                 />
                 <Select
-                  className="pt-6"
                   isMulti
                   label="Tags"
                   name="tags"

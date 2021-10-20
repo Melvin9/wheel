@@ -1,7 +1,7 @@
 import React from "react";
 
-import { MenuVertical } from "@bigbinary/neeto-icons";
-import { Typography, Dropdown } from "neetoui/v2";
+import { MenuVertical } from "neetoicons";
+import { Typography, Dropdown } from "neetoui";
 
 const Header = ({ note, setSelectedNoteId, setShowDeleteAlert }) => {
   return (
@@ -11,7 +11,6 @@ const Header = ({ note, setSelectedNoteId, setShowDeleteAlert }) => {
         icon={() => <MenuVertical size={15} color="gray" />}
         buttonStyle="text"
         position="bottom-end"
-        className="pr-0"
       >
         <li>Edit</li>
         <li

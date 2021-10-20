@@ -1,13 +1,14 @@
 import React from "react";
 
-import { Home, UserCircle, Settings } from "@bigbinary/neeto-icons";
 import { Toastr } from "neetoui";
-import { Sidebar } from "neetoui/v2/layouts";
+import { Sidebar } from "neetoui/layouts";
 import { withRouter } from "react-router-dom";
 
 import authenticationApi from "apis/authentication";
 import { resetAuthTokens } from "apis/axios";
 import { useAuthDispatch } from "contexts/auth";
+
+import { NAV_LINKS } from "./constants";
 
 const NavBar = () => {
   const authDispatch = useAuthDispatch();
@@ -28,29 +29,7 @@ const NavBar = () => {
         appName="neetoUI"
         collapsible
         isCollapsed
-        navLinks={[
-          {
-            icon: function noRefCheck() {
-              return <Home />;
-            },
-            label: "Notes",
-            to: "/notes"
-          },
-          {
-            icon: function noRefCheck() {
-              return <UserCircle />;
-            },
-            label: "Contacts",
-            to: "/contacts"
-          },
-          {
-            icon: function noRefCheck() {
-              return <Settings />;
-            },
-            label: "Settings",
-            to: "/settings"
-          }
-        ]}
+        navLinks={NAV_LINKS}
         profileInfo={{
           dropdownProps: [
             {
