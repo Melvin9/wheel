@@ -50,4 +50,14 @@ const ROLES = [
     value: "V2"
   }
 ];
-export { DUMMY_DATA, ROLES };
+const CONTACTS = [
+  {
+    label: "Value One",
+    value: "value1"
+  },
+  {
+    label: "Value Two",
+    value: "value2"
+  }
+];
+export { DUMMY_DATA, ROLES, CONTACTS };

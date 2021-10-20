@@ -6,7 +6,7 @@ import { Pane, Typography, Button, Toastr } from "neetoui";
 import { Input, Select } from "neetoui/formik";
 import * as yup from "yup";
 
-import { ROLES } from "./constants";
+import { CONTACTS, ROLES } from "./constants";
 
 export default function NewNotePane({ setNotes, showPane, setShowPane }) {
   const onClose = () => setShowPane(false);
@@ -68,16 +68,7 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
                   isSearchable
                   label="Assigned Contact"
                   name="contact"
-                  options={[
-                    {
-                      label: "Value One",
-                      value: "value1"
-                    },
-                    {
-                      label: "Value Two",
-                      value: "value2"
-                    }
-                  ]}
+                  options={CONTACTS}
                   placeholder="Select Role"
                   required
                   size="small"
