@@ -38,7 +38,11 @@ const Row = ({
           {contact.email}
         </Typography>
       </td>
-      <td>{contact.createdAt ? contact.createdAt : DEFAULT_CREATED_AT}</td>
+      <td>
+        <Typography style="body2" weight="light">
+          {contact.createdAt ? contact.createdAt : DEFAULT_CREATED_AT}
+        </Typography>
+      </td>
       <td>
         <div className="flex flex-row items-center justify-end space-x-3">
           <Dropdown icon={MenuHorizontal} buttonStyle="icon" autoWidth>
