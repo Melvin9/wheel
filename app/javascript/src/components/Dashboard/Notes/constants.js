@@ -7,7 +7,10 @@ const DUMMY_DATA = [
     description:
       "Are you getting my texts???\" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting",
     tags: ["Getting Started"],
-    contact: ""
+    contact: {
+      label: "Value One",
+      value: "value1"
+    }
   },
   {
     id: 2,
@@ -15,7 +18,10 @@ const DUMMY_DATA = [
     description:
       "Are you getting my texts???\" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting",
     tags: ["Getting Started"],
-    contact: ""
+    contact: {
+      label: "Value One",
+      value: "value1"
+    }
   },
   {
     id: 3,
@@ -23,7 +29,10 @@ const DUMMY_DATA = [
     description:
       "Are you getting my texts???\" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn't getting",
     tags: ["Getting Started", "Bugs"],
-    contact: ""
+    contact: {
+      label: "Value One",
+      value: "value1"
+    }
   }
 ];
 const ROLES = [

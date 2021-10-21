@@ -3,7 +3,12 @@ import React from "react";
 import { MenuVertical } from "neetoicons";
 import { Typography, Dropdown } from "neetoui";
 
-const Header = ({ note, setSelectedNoteId, setShowDeleteAlert }) => {
+const Header = ({
+  note,
+  setSelectedNoteId,
+  setShowDeleteAlert,
+  setShowPane
+}) => {
   return (
     <div className="flex w-full justify-between">
       <Typography style="h4">{note.title}</Typography>
@@ -12,7 +17,14 @@ const Header = ({ note, setSelectedNoteId, setShowDeleteAlert }) => {
         buttonStyle="text"
         position="bottom-end"
       >
-        <li>Edit</li>
+        <li
+          onClick={() => {
+            setSelectedNoteId(note.id);
+            setShowPane(true);
+          }}
+        >
+          Edit
+        </li>
         <li
           onClick={() => {
             setSelectedNoteId(note.id);

@@ -7,7 +7,7 @@ import Body from "./Body";
 import Footer from "./Footer";
 import Header from "./Header";
 
-const Card = ({ note, setSelectedNoteId, setShowDeleteAlert }) => {
+const Card = ({ note, setSelectedNoteId, setShowDeleteAlert, setShowPane }) => {
   return (
     <>
       <div className="border border-gray-300 neeto-ui-shadow-s p-4 rounded w-full mt-3">
@@ -16,6 +16,7 @@ const Card = ({ note, setSelectedNoteId, setShowDeleteAlert }) => {
             note={note}
             setSelectedNoteId={setSelectedNoteId}
             setShowDeleteAlert={setShowDeleteAlert}
+            setShowPane={setShowPane}
           />
           <Body>
             <Typography style="body2">{note.description}</Typography>{" "}
