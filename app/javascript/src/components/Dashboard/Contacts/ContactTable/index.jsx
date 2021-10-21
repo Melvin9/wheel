@@ -10,9 +10,7 @@ const ContactTable = ({
   setShowDeleteAlert
 }) => {
   return (
-    <table
-      className={`neeto-ui-table neeto-ui-table--checkbox neeto-ui-table--actions`}
-    >
+    <table className="neeto-ui-table neeto-ui-table--checkbox neeto-ui-table--actions">
       <Header />
       <tbody>
         {contacts.map((contact, index) => (

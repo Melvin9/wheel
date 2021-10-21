@@ -33,7 +33,11 @@ const Row = ({
           </div>
         </div>
       </td>
-      <td>{contact.email}</td>
+      <td>
+        <Typography style="body2" weight="light" className="w-24 truncate">
+          {contact.email}
+        </Typography>
+      </td>
       <td>{contact.createdAt ? contact.createdAt : DEFAULT_CREATED_AT}</td>
       <td>
         <div className="flex flex-row items-center justify-end space-x-3">

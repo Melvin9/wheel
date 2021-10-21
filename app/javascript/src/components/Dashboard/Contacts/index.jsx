@@ -15,7 +15,7 @@ import NewContactPane from "./NewContactPane";
 import DeleteAlert from "../../Common/DeleteAlert";
 
 const Contacts = () => {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [showNewContactPane, setShowNewContactPane] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedContactId, setSelectedContactId] = useState([]);
@@ -28,10 +28,10 @@ const Contacts = () => {
 
   const fetchContacts = async () => {
     setContacts(DUMMY_CONTACT);
-    setLoading(false);
+    setIsLoading(false);
   };
 
-  if (loading) {
+  if (isLoading) {
     return <PageLoader />;
   }
 
@@ -47,9 +47,9 @@ const Contacts = () => {
           title="Contacts"
           menuBarToggle={() => setToggleMenu(!toggleMenu)}
           actionBlock={
-            <div className="flex">
+            <div className="flex space-x-2">
               <Input
-                className="pr-2 w-80"
+                className="w-80"
                 onChange={e => setSearchTerm(e.target.value)}
                 placeholder="Search Name, Email, Phone Number,Etc. "
                 size="small"
