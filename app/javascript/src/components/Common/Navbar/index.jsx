@@ -34,7 +34,9 @@ const NavBar = () => {
           dropdownProps: [
             {
               label: "Edit",
-              onClick: null
+              onClick: () => {
+                window.location.href = "/my/profile";
+              }
             },
             {
               label: "Logout",

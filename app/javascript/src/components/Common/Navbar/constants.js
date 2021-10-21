@@ -16,6 +16,6 @@ export const NAV_LINKS = [
   {
     icon: () => <Settings />,
     label: "Settings",
-    to: "/settings"
+    to: "/my/profile"
   }
 ];
