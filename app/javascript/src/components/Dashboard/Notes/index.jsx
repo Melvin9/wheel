@@ -35,6 +35,11 @@ const Notes = () => {
     return <PageLoader />;
   }
 
+  const handleAddNote = () => {
+    setShowNewNotePane(true);
+    setSelectedNoteId(0);
+  };
+
   return (
     <div className="flex flex-row w-full">
       <Menubar showMenu={toggleMenu} type="notes" />
@@ -53,7 +58,7 @@ const Notes = () => {
                 prefix={<Search size={16} />}
               />
               <Button
-                onClick={() => setShowNewNotePane(true)}
+                onClick={handleAddNote}
                 label="Add Note"
                 icon="ri-add-line"
               />
@@ -68,6 +73,7 @@ const Notes = () => {
                 note={note}
                 setSelectedNoteId={setSelectedNoteId}
                 setShowDeleteAlert={setShowDeleteAlert}
+                setShowPane={setShowNewNotePane}
               />
             ))}
           </>
@@ -76,14 +82,16 @@ const Notes = () => {
             image={EmptyNotesListImage}
             title="Looks like you don't have any notes!"
             subtitle="Add your notes to send customized emails to them."
-            primaryAction={() => setShowNewNotePane(true)}
+            primaryAction={handleAddNote}
             primaryActionLabel="Add New Note"
           />
         )}
         <NewNotePane
           showPane={showNewNotePane}
           setShowPane={setShowNewNotePane}
+          notes={notes}
           setNotes={setNotes}
+          selectedId={selectedNoteId}
         />
         {showDeleteAlert && (
           <DeleteAlert

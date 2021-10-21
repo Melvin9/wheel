@@ -12,22 +12,61 @@ import {
   ROLES
 } from "./constants";
 
-export default function NewNotePane({ setNotes, showPane, setShowPane }) {
+export default function NewNotePane({
+  setNotes,
+  showPane,
+  setShowPane,
+  notes = [],
+  selectedId = 0
+}) {
   const onClose = () => setShowPane(false);
-  const handleSubmit = values => {
+  let defaultValues = FORM_INITIAL_VALUES;
+  if (selectedId) {
+    const note = notes.filter(note => note.id === selectedId)[0];
+    defaultValues = {
+      title: note?.title,
+      description: note?.description,
+      tags: note?.tags?.map(label => {
+        return { label, value: label };
+      }),
+      contact: note?.contact
+    };
+  }
+  const handleCreate = values => {
     setNotes(notes => {
       const newNote = {
         id: notes[notes.length - 1] + 1,
         title: values.title,
         description: values.description,
         tags: values.tags.map(({ label }) => label),
-        contact: values.tags.map(({ label }) => label)
+        contact: values.contact
       };
       return [...notes, newNote];
     });
     Toastr.success("Note added successfully");
     onClose();
   };
+
+  const handleEdit = values => {
+    setNotes(notes => {
+      return notes.map(note => {
+        if (note.id === selectedId) {
+          return {
+            id: note.id,
+            title: values.title,
+            description: values.description,
+            tags: values.tags.map(({ label }) => label),
+            contact: values.contact
+          };
+        }
+
+        return note;
+      });
+    });
+    Toastr.success("Note updated successfully");
+    onClose();
+  };
+
   return (
     <Pane isOpen={showPane} onClose={onClose}>
       <Pane.Header>
@@ -36,8 +75,8 @@ export default function NewNotePane({ setNotes, showPane, setShowPane }) {
         </Typography>
       </Pane.Header>
       <Formik
-        initialValues={FORM_INITIAL_VALUES}
-        onSubmit={handleSubmit}
+        initialValues={defaultValues}
+        onSubmit={selectedId ? handleEdit : handleCreate}
         validationSchema={FORM_VALIDATE_NOTES}
       >
         {({ isSubmitting }) => (

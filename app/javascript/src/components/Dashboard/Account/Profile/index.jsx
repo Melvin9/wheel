@@ -18,13 +18,16 @@ const Profile = () => {
 
   return (
     <>
-      <Header title="My Profile" className="border-b border-gray-200" />
+      <Header
+        title="My Profile"
+        className="border-b border-gray-200 flex justify-center"
+      />
       <div className="flex flex-col items-center justify-center w-full h-full mx-auto sm:max-w-md">
         <Formik
           initialValues={{
-            email: user.email,
-            firstName: user.first_name,
-            lastName: user.last_name,
+            email: user?.email,
+            firstName: user?.first_name,
+            lastName: user?.last_name,
             password: ""
           }}
           onSubmit={onSubmit}
