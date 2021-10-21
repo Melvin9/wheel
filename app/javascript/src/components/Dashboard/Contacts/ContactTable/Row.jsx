@@ -5,7 +5,12 @@ import { Checkbox, Dropdown, Avatar, Typography } from "neetoui";
 
 import { DEFAULT_CREATED_AT } from "../constants";
 
-const Row = ({ contact, setSelectedContactId, setShowDeleteAlert }) => {
+const Row = ({
+  contact,
+  setSelectedContactId,
+  setShowDeleteAlert,
+  setShowPane
+}) => {
   return (
     <tr>
       <td>
@@ -33,7 +38,14 @@ const Row = ({ contact, setSelectedContactId, setShowDeleteAlert }) => {
       <td>
         <div className="flex flex-row items-center justify-end space-x-3">
           <Dropdown icon={MenuHorizontal} buttonStyle="icon" autoWidth>
-            <li>Edit</li>
+            <li
+              onClick={() => {
+                setSelectedContactId(contact.id);
+                setShowPane(true);
+              }}
+            >
+              Edit
+            </li>
             <li
               onClick={() => {
                 setSelectedContactId(contact.id);

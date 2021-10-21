@@ -11,9 +11,26 @@ import {
   ROLE_OPTIONS
 } from "./constants";
 
-export default function NewContactPane({ setContacts, showPane, setShowPane }) {
+export default function NewContactPane({
+  setContacts,
+  showPane,
+  setShowPane,
+  contacts = [],
+  selectedId = 0
+}) {
   const onClose = () => setShowPane(false);
-  const handleSubmit = values => {
+  let defaultValues = FORM_INITIAL_VALUES;
+  if (selectedId) {
+    const contact = contacts.filter(contact => contact.id === selectedId)[0];
+    defaultValues = {
+      firstName: contact?.firstName,
+      lastName: contact?.lastName,
+      role: contact?.role,
+      email: contact?.email
+    };
+  }
+
+  const handleCreate = values => {
     setContacts(contacts => {
       const newContact = {
         id: contacts[contacts.length - 1].id + 1,
@@ -27,6 +44,26 @@ export default function NewContactPane({ setContacts, showPane, setShowPane }) {
     Toastr.success("Contact added successfully");
     onClose();
   };
+
+  const handleEdit = values => {
+    setContacts(contacts => {
+      return contacts.map(contact => {
+        if (contact.id === selectedId) {
+          return {
+            id: contact.id,
+            firstName: values.firstName,
+            lastName: values.lastName,
+            role: values.role,
+            email: values.email
+          };
+        }
+
+        return contact;
+      });
+    });
+    Toastr.success("Contact updated successfully");
+    onClose();
+  };
   return (
     <Pane isOpen={showPane} onClose={onClose}>
       <Pane.Header>
@@ -35,8 +72,8 @@ export default function NewContactPane({ setContacts, showPane, setShowPane }) {
         </Typography>
       </Pane.Header>
       <Formik
-        initialValues={FORM_INITIAL_VALUES}
-        onSubmit={handleSubmit}
+        initialValues={defaultValues}
+        onSubmit={selectedId ? handleEdit : handleCreate}
         validationSchema={FORM_VALIDATE_CONTACTS}
       >
         {({ isSubmitting }) => (

@@ -5,6 +5,7 @@ import Row from "./Row";
 
 const ContactTable = ({
   contacts,
+  setShowPane,
   setSelectedContactId,
   setShowDeleteAlert
 }) => {
@@ -18,6 +19,7 @@ const ContactTable = ({
           <Row
             key={index}
             contact={contact}
+            setShowPane={setShowPane}
             setSelectedContactId={setSelectedContactId}
             setShowDeleteAlert={setShowDeleteAlert}
           />

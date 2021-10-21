@@ -39,6 +39,7 @@ const Notes = () => {
     setShowNewNotePane(true);
     setSelectedNoteId(0);
   };
+
   return (
     <div className="flex flex-row w-full">
       <Menubar showMenu={toggleMenu} type="notes" />

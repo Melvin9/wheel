@@ -35,6 +35,10 @@ const Contacts = () => {
     return <PageLoader />;
   }
 
+  const handleAddContact = () => {
+    setShowNewContactPane(true);
+    setSelectedContactId(0);
+  };
   return (
     <div className="flex flex-row w-full">
       <Menubar showMenu={toggleMenu} type="contacts" />
@@ -53,7 +57,7 @@ const Contacts = () => {
                 prefix={<Search size={16} />}
               />
               <Button
-                onClick={() => setShowNewContactPane(true)}
+                onClick={handleAddContact}
                 label="Add Contact"
                 icon="ri-add-line"
               />
@@ -65,6 +69,7 @@ const Contacts = () => {
             <Scrollable className="w-full">
               <>
                 <ContactTable
+                  setShowPane={setShowNewContactPane}
                   contacts={contacts}
                   setSelectedContactId={setSelectedContactId}
                   setShowDeleteAlert={setShowDeleteAlert}
@@ -85,13 +90,15 @@ const Contacts = () => {
             image={EmptyNotesListImage}
             title="Looks like you don't have any notes!"
             subtitle="Add your notes to send customized emails to them."
-            primaryAction={() => setShowNewContactPane(true)}
+            primaryAction={handleAddContact}
             primaryActionLabel="Add New Note"
           />
         )}
         <NewContactPane
           showPane={showNewContactPane}
           setShowPane={setShowNewContactPane}
+          contacts={contacts}
+          selectedId={selectedContactId}
           setContacts={setContacts}
         />
         {showDeleteAlert && (

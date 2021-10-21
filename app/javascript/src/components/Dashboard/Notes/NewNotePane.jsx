@@ -21,7 +21,7 @@ export default function NewNotePane({
 }) {
   const onClose = () => setShowPane(false);
   let defaultValues = FORM_INITIAL_VALUES;
-  if (selectedId !== 0) {
+  if (selectedId) {
     const note = notes.filter(note => note.id === selectedId)[0];
     defaultValues = {
       title: note?.title,
@@ -46,6 +46,7 @@ export default function NewNotePane({
     Toastr.success("Note added successfully");
     onClose();
   };
+
   const handleEdit = values => {
     setNotes(notes => {
       return notes.map(note => {
