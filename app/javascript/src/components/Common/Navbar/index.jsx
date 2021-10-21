@@ -33,7 +33,7 @@ const NavBar = () => {
         profileInfo={{
           dropdownProps: [
             {
-              label: "Edit",
+              label: "My Profile",
               onClick: () => {
                 window.location.href = "/my/profile";
               }
